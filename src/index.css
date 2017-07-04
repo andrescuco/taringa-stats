@@ -3,3 +3,68 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h1 {
+    text-align: center;
+}
+
+.fa {
+  color:#666B85;
+  font-size:17px;
+}
+
+a {
+  color:#666B85;
+  outline: none;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.85;
+  outline: none;
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+/*** Table Styles **/
+
+table {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+th {
+  color:#D5DDE5;
+  background:#000000;
+  font-size:18px;
+  font-weight: 100;
+  padding:12px;
+  text-align:center;
+}
+
+tr {
+  color:#666B85;
+  font-size:16px;
+}
+
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+
+td {
+  background:#FFFFFF;
+  padding:12px;
+  font-weight:300;
+  font-size:16px;
+}
