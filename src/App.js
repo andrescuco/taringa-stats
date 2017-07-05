@@ -5,13 +5,12 @@ import { VictoryBar, VictoryChart, VictoryAxis,
  VictoryLabel, VictoryPie } from 'victory';
 import Button from 'muicss/lib/react/button';
 import Loader from 'react-loader'
+import 'react-bootstrap'
 
 const dailyTop = "https://api.taringa.net/post/populars/view/today?count=10"
 const weeklyTop = "https://api.taringa.net/post/populars/view/week?count=10"
 const monthlyTop = "https://api.taringa.net/post/populars/view/month?count=10"
 const allTimeTop = "https://api.taringa.net/post/populars/view/all?count=10"
-// let barChart;
-// let pieChart;
 
 class Row extends React.Component {
   constructor() {
@@ -37,7 +36,7 @@ class Row extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { source: monthlyTop, datasource: [], charttype: "info", loaded: false }
+    this.state = { source: monthlyTop, datasource: [], charttype: "pieChart", loaded: false }
   }
 
   loadInfo() {
@@ -164,7 +163,7 @@ class App extends React.Component {
         <Button onClick={this.changeToPie} > <i className="fa fa-pie-chart">   </i> </Button>
         <Button onClick={this.changeToInfo}> <i className="fa fa-file-text-o"> </i> </Button>
         </div>
-          {chart}
+        {chart}
         </div>
       </Loader>
     )
@@ -227,10 +226,10 @@ class Chart extends React.Component {
 
     return (
       <VictoryChart
-        containerComponent={<svg width={350} viewBox="0 0 350 400"></svg>}
+        containerComponent={<svg  viewBox="-50 0 450 450"></svg>}
         style={
         {parent:
-          {height: "500", marginTop: "20px"}
+          {height: "600"}
         }}
         domainPadding={{ x: 25 }}
         theme={VictoryTheme.material}
@@ -252,6 +251,7 @@ class Chart extends React.Component {
         dependentAxis
         tickFormat={(x) => (`${x / 1000}k`)}
       />
+
       <VictoryGroup
         offset={15}
         style={{ data: { width: 15 } }}
@@ -285,14 +285,14 @@ class Chart extends React.Component {
       />
 
       <VictoryLegend
-        style={{labels: {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-        fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 14} }}
-      x={260}
-      y={80}
-      data={[
-        {name: 'Puntos', symbol: { type: 'square', fill: '#000000' }},
-        {name: 'Visitas', symbol: { type: 'square', fill: '#EBEBEB' }}
-      ]}
+        style={ {labels: {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                 fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 12} }}
+        x={260}
+        y={80}
+        data={[
+          {name: 'Puntos', symbol: { type: 'square', fill: '#000000' }},
+          {name: 'Visitas', symbol: { type: 'square', fill: '#EBEBEB' }}
+        ]}
       />
 
       </VictoryChart>
@@ -302,63 +302,65 @@ class Chart extends React.Component {
 
 class PieChart extends React.Component {
   render() {
-    return(
-      <div style={{marginTop: "10px"}}>
+    return (
+      <div>
       <h1 style={{
         fontSize: 26, fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
                  color: "rgb(69, 90, 100)", fontWeight: "bold", margin: "0"
-      }}
+      }}      // <svg width={"100%"} height={"550"} viewBox="-150 0 650 450" >
       >Categorias en Tops</h1>
+      <svg width={"100%"} height={"450"} viewBox="-100 0 600 450" >
 
-      <VictoryPie
-      events={[{
-        target: "data",
-        eventKey: [0, 2, 4],
-        eventHandlers: {
-          onMouseOver: () => {
-            return [
-              {
-                mutation: (props) => {
-                  return {
-                    style: Object.assign({}, props.style, {opacity: 0.7})
-                  };
-                }
-              }, {
-        target: "labels",
-                mutation: () => {
-                  return {text: (d) => d.y};
-                }
-              }
-            ];
-          },
-          onMouseOut: () => {
-            return [{
-                mutation: () => {
-                  return null;
-                }
-              }, {
-         target: "labels",
-                mutation: () => {
-                  return null;
-         }
-       }];}}}]}
+        <VictoryPie
+          events={[{
+            target: "data",
+            eventKey: [0, 2, 4],
+            eventHandlers: {
+              onMouseOver: () => {
+                return [
+                  {
+                    mutation: (props) => {
+                      return {
+                        style: Object.assign({}, props.style, {opacity: 0.7})
+                      };
+                    }
+                  }, {
+            target: "labels",
+                    mutation: () => {
+                      return {text: (d) => d.y};
+                    }
+                  }
+                ];
+              },
+              onMouseOut: () => {
+                return [{
+                    mutation: () => {
+                      return null;
+                    }
+                  }, {
+             target: "labels",
+                    mutation: () => {
+                      return null;
+             }
+           }];}}}]}
 
-        labelRadius={200}
-        containerComponent={<svg width={"100%"} height={450} viewBox="0 -20 400 480"></svg>}
-        theme={VictoryTheme.material}
-        animate={{ onLoad: { duration: 1000 } }}
-        data={this.props.data}
-        style={{
-          labels: {fontSize: 13, fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                   fill: "rgb(69, 90, 100)", fontWeight: 100, padding: 10}
-        }}
-        x="Category"
-        y="Num"
-      />
+            labelRadius={190}
+          theme={VictoryTheme.material}
+          animate={{ onLoad: { duration: 1000 } }}
+          style={{
+            parent: {overflow: "visible"},
+            labels: {fontSize: 13, fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                     fill: "rgb(69, 90, 100)", fontWeight: 100, overflow: "visible"}
+          }}
+          data={this.props.data}
+          x="Category"
+          y="Num"
+        />
+
+      </svg>
     </div>
-    )
+)
   }
 }
-
 
 export default App;
