@@ -5,7 +5,6 @@ import { VictoryBar, VictoryChart, VictoryAxis,
  VictoryLabel, VictoryPie } from 'victory';
 import Button from 'muicss/lib/react/button';
 import Loader from 'react-loader'
-import 'react-bootstrap'
 
 const dailyTop = "https://api.taringa.net/post/populars/view/today?count=10"
 const weeklyTop = "https://api.taringa.net/post/populars/view/week?count=10"
@@ -36,7 +35,7 @@ class Row extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { source: monthlyTop, datasource: [], charttype: "pieChart", loaded: false }
+    this.state = { source: monthlyTop, datasource: [], charttype: "info", loaded: false }
   }
 
   loadInfo() {
@@ -135,7 +134,7 @@ class App extends React.Component {
   //  console.log(this.state.datasource.length)
 
   if (this.state.datasource.length !== 0) {
-    console.log("The data is there and it's okay")
+    // console.log("The data is there and it's okay")
     return (
       <Loader loaded={this.state.loaded}>
       <div>
@@ -168,7 +167,7 @@ class App extends React.Component {
       </Loader>
     )
   } else {
-    console.log("Seems like there's not data provided by the T! API.")
+    // console.log("Seems like there's not data provided by the T! API.")
     return (
       <Loader loaded={this.state.loaded}>
       <div>
