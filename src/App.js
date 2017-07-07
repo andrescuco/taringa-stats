@@ -213,7 +213,7 @@ class Info extends React.Component {
         <p>El promedio de seguidores en los Top Posts es de: {Math.round(arrFollows.reduce((x,y) => x+y,0)/arrFollows.length)}</p>
         <p>El promedio de comentarios en los Top Posts es de de: {Math.round(arrComments.reduce((x,y) => x+y,0)/arrComments.length)}</p>
         <p>Todos los datos son sacados de la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank">API Oficial de Taringa.</a></p>
-        <p>Puedes ver el post con mas información sobre esta aplicación web aquí.</p>
+        <p>Creado por <a href="https://www.taringa.net/hugo1583/posts" target="_blank">@hugo1583</a>.</p>
       </div>
 
     )
@@ -300,66 +300,94 @@ class Chart extends React.Component {
 }
 
 class PieChart extends React.Component {
-  render() {
-    return (
-      <div>
-      <h1 style={{
-        fontSize: 26, fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                 color: "rgb(69, 90, 100)", fontWeight: "bold", margin: "0"
-      }}      // <svg width={"100%"} height={"550"} viewBox="-150 0 650 450" >
-      >Categorias en Tops</h1>
-      <svg width={"100%"} height={"450"} viewBox="-100 0 600 450" >
+    render() {
+        return (
+          <div>
+            <h1 style = {
+                {
+                    fontSize: 26,
+                    fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                    color: "rgb(69, 90, 100)",
+                    fontWeight: "bold",
+                    margin: "0"
+                }
+            }
+            > Categorias en Tops </h1>
 
-        <VictoryPie
-          events={[{
-            target: "data",
-            eventKey: [0, 2, 4],
-            eventHandlers: {
-              onMouseOver: () => {
-                return [
-                  {
-                    mutation: (props) => {
-                      return {
-                        style: Object.assign({}, props.style, {opacity: 0.7})
-                      };
-                    }
-                  }, {
-            target: "labels",
-                    mutation: () => {
-                      return {text: (d) => d.y};
-                    }
-                  }
-                ];
-              },
-              onMouseOut: () => {
-                return [{
-                    mutation: () => {
-                      return null;
-                    }
-                  }, {
-             target: "labels",
-                    mutation: () => {
-                      return null;
-             }
-           }];}}}]}
+            <svg width = {"100%"} height = {"450"} viewBox = "-100 0 600 450">
 
-            labelRadius={190}
-          theme={VictoryTheme.material}
-          animate={{ onLoad: { duration: 1000 } }}
-          style={{
-            parent: {overflow: "visible"},
-            labels: {fontSize: 13, fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                     fill: "rgb(69, 90, 100)", fontWeight: 100, overflow: "visible"}
-          }}
-          data={this.props.data}
-          x="Category"
-          y="Num"
-        />
+            <VictoryPie events = {
+                [{
+                    target: "data",
+                    eventKey: [0, 2, 4],
+                    eventHandlers: {
+                        onMouseOver: () => {
+                            return [{
+                                mutation: (props) => {
+                                    return {
+                                        style: Object.assign({}, props.style, {
+                                            opacity: 0.7
+                                        })
+                                    };
+                                }
+                            }, {
+                                target: "labels",
+                                mutation: () => {
+                                    return {
+                                        text: (d) => d.y
+                                    };
+                                }
+                            }];
+                        },
+                        onMouseOut: () => {
+                            return [{
+                                mutation: () => {
+                                    return null;
+                                }
+                            }, {
+                                target: "labels",
+                                mutation: () => {
+                                    return null;
+                                }
+                            }];
+                        }
+                    }
+                }]
+            }
 
-      </svg>
-    </div>
-)
-  }
+            labelRadius = {190}
+            theme = {VictoryTheme.material}
+            animate = {
+                {
+                    onLoad: {
+                        duration: 1000
+                    }
+                }
+            }
+            style = {
+                {
+                    parent: {
+                        overflow: "visible"
+                    },
+                    labels: {
+                        fontSize: 13,
+                        fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                        fill: "rgb(69, 90, 100)",
+                        fontWeight: 100,
+                        overflow: "visible"
+                    }
+                }
+            }
+            data = {this.props.data}
+            x = "Category"
+            y = "Num"
+
+            />
+
+            </svg>
+          </div>
+        )
+    }
 }
 
 export default App;
