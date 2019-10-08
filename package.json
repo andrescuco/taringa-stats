@@ -8,6 +8,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "muicss": "^0.9.16",
+    "package.json": "^2.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-loader": "^2.4.2",
