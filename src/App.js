@@ -24,7 +24,7 @@ class Row extends React.Component {
     return (
       <tr>
         <td>{this.props.index}</td>
-        <td><a href={this.props.link} target="_blank">{this.props.title}</a></td>
+        <td><a href={this.props.link} target="_blank" rel="noopener noreferrer">{this.props.title}</a></td>
         <td>{this.props.score}</td>
         <td>{this.props.views}</td>
       </tr>
@@ -122,11 +122,11 @@ class App extends React.Component {
    for(let key in count){myArr.push({"Category" : key, "Num" : count[key]})}
 
 
-       if (this.state.charttype == "barChart") {
+       if (this.state.charttype === "barChart") {
          chart = (<Chart data={this.state.datasource.slice(0,3)}/>)
-       } else if (this.state.charttype == "pieChart") {
+       } else if (this.state.charttype === "pieChart") {
          chart = (<PieChart data={myArr}/>)
-       } else if (this.state.charttype == "info") {
+       } else if (this.state.charttype === "info") {
          chart = (<Info  data={this.state.datasource}/>)
        }
 
@@ -205,15 +205,15 @@ class Info extends React.Component {
 
     return (
       <div style={{paddingTop: "20px", margin: "auto", maxWidth: "600px", height: "500px", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "center"}}>
-        <p>Esta simple aplicación web fue creada para <a href="https://www.taringa.net/" target="_blank">T!</a></p>
+        <p>Esta simple aplicación web fue creada para <a href="https://www.taringa.net/" target="_blank" rel="noopener noreferrer">T!</a></p>
         <p>Su funcionalidad la de visualizar y organizar algunos de los datos de los Top Posts. Cambia el periodo de tiempo y los datos también cambiaran!</p>
         <p>Puedes ver una visualización de los Puntos VS Visitas de los tres primeros Top Posts de cada periodo de tiempo, también puedes ver cual es la distribución de categorías entre los diez primeros Top Posts de cada periodo de tiempo.</p>
         <p>Algunos datos interesantes son:</p>
         <p>El promedio de puntos recibidos en Top Posts es  de: {Math.round(arrScores.reduce((x,y) => x+y,0)/arrScores.length)}</p>
         <p>El promedio de seguidores en los Top Posts es de: {Math.round(arrFollows.reduce((x,y) => x+y,0)/arrFollows.length)}</p>
         <p>El promedio de comentarios en los Top Posts es de de: {Math.round(arrComments.reduce((x,y) => x+y,0)/arrComments.length)}</p>
-        <p>Todos los datos son sacados de la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank">API Oficial de Taringa.</a></p>
-        <p>Creado por <a href="https://www.taringa.net/hugo1583/posts" target="_blank">@hugo1583</a>.</p>
+        <p>Todos los datos son sacados de la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank" rel="noopener noreferrer">API Oficial de Taringa.</a></p>
+        <p>Creado por <a href="https://www.taringa.net/hugo1583/posts" target="_blank" rel="noopener noreferrer">@hugo1583</a>.</p>
       </div>
 
     )
