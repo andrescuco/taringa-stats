@@ -6,10 +6,10 @@ import { VictoryBar, VictoryChart, VictoryAxis,
 import Button from 'muicss/lib/react/button';
 import Loader from 'react-loader'
 
-const dailyTop = "https://api.taringa.net/post/populars/view/today?count=10"
-const weeklyTop = "https://api.taringa.net/post/populars/view/week?count=10"
-const monthlyTop = "https://api.taringa.net/post/populars/view/month?count=10"
-const allTimeTop = "https://api.taringa.net/post/populars/view/all?count=10"
+const dailyTop = "http://www.mocky.io/v2/5d9d15ac31000016c92fc92b" // https://pastebin.com/yAV3gQtb
+const weeklyTop = "http://www.mocky.io/v2/5d9d1d7c3100002f262fc944" // https://pastebin.com/jDRwPMZV
+const monthlyTop = "http://www.mocky.io/v2/5d9d1ee031000038c92fc947" // https://pastebin.com/fNfJkTAG
+const allTimeTop = "http://www.mocky.io/v2/5d9d167b31000038c92fc92c" // https://pastebin.com/tENKBZGF
 
 class Row extends React.Component {
   constructor() {
@@ -35,7 +35,7 @@ class Row extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { source: monthlyTop, datasource: [], charttype: "info", loaded: false }
+    this.state = { source: dailyTop, datasource: [], charttype: "info", loaded: false }
   }
 
   loadInfo() {
