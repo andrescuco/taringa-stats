@@ -9,12 +9,12 @@
   "dependencies": {
     "axios": "^0.18.1",
     "gh-pages": "^2.1.1",
-    "muicss": "^0.9.16",
+    "muicss": "^0.9.43",
     "package.json": "^2.0.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-loader": "^2.4.2",
-    "victory": "^0.21.0"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-loader": "^2.4.5",
+    "victory": "^0.21.5"
   },
   "scripts": {
     "start": "react-scripts start",

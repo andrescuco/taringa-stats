@@ -11,6 +11,7 @@ const weeklyTop = "https://www.mocky.io/v2/5d9d1d7c3100002f262fc944" // https://
 const monthlyTop = "https://www.mocky.io/v2/5d9d1ee031000038c92fc947" // https://pastebin.com/fNfJkTAG
 const allTimeTop = "https://www.mocky.io/v2/5d9d167b31000038c92fc92c" // https://pastebin.com/tENKBZGF
 
+// Crea la tabla con el titulo, puntos y visitas de los post. 
 class Row extends React.Component {
   constructor() {
     super();
@@ -38,6 +39,7 @@ class App extends React.Component {
     this.state = { source: dailyTop, datasource: [], charttype: "info", loaded: false }
   }
 
+  // Se usa la libreria axios para leer respuestas GET. 
   loadInfo() {
     var th = this;
     this.serverRequest =
@@ -54,7 +56,6 @@ class App extends React.Component {
    this.loadInfo();
 
   }
-
 
  componentWillUnmount() {
   this.serverRequest.abort();
@@ -130,15 +131,13 @@ class App extends React.Component {
          chart = (<Info  data={this.state.datasource}/>)
        }
 
-  //  console.log(count)
-  //  console.log(this.state.datasource.length)
-
+  // Si la API devueulve datos, organiza los botones y tabla sin datos.
   if (this.state.datasource.length !== 0) {
-    // console.log("The data is there and it's okay")
+
     return (
       <Loader loaded={this.state.loaded}>
       <div>
-        <h1 style={{fill: "rgb(69, 90, 100)", fontWeight: 100}}> Taringa Stats!</h1>
+        <h1 style={{fill: "rgb(69, 90, 100)", fontWeight: 100}}>¡Taringa Stats!</h1>
         <div className="mui--text-center">
           <Button onClick={this.changeToDaily}>   Diario    </Button>
           <Button onClick={this.changeToWeekly}>  Semanal   </Button>
@@ -166,8 +165,8 @@ class App extends React.Component {
         </div>
       </Loader>
     )
-  } else {
-    // console.log("Seems like there's not data provided by the T! API.")
+  } else {   // Mensaje de error si no hay datos en la API.
+
     return (
       <Loader loaded={this.state.loaded}>
       <div>
@@ -191,6 +190,7 @@ class App extends React.Component {
   }
 }
 
+// División para documentación / información básica de la app. 
 class Info extends React.Component {
   render () {
     var arrComments = []
@@ -204,16 +204,15 @@ class Info extends React.Component {
        })
 
     return (
-      <div style={{paddingTop: "20px", margin: "auto", maxWidth: "600px", height: "500px", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "center"}}>
-        <p>Esta simple aplicación web fue creada para <a href="https://www.taringa.net/" target="_blank" rel="noopener noreferrer">T!</a></p>
-        <p>Su funcionalidad la de visualizar y organizar algunos de los datos de los Top Posts. Cambia el periodo de tiempo y los datos también cambiaran.</p>
-        <p>Puedes ver una visualización de los Puntos VS Visitas de los tres primeros Top Posts de cada periodo de tiempo, también puedes ver cual es la distribución de categorías entre los diez primeros Top Posts de cada periodo de tiempo.</p>
-        <p>Algunos datos interesantes son:</p>
-        <p>El promedio de puntos recibidos en Top Posts es  de: {Math.round(arrScores.reduce((x,y) => x+y,0)/arrScores.length)}</p>
-        <p>El promedio de seguidores en los Top Posts es de: {Math.round(arrFollows.reduce((x,y) => x+y,0)/arrFollows.length)}</p>
-        <p>El promedio de comentarios en los Top Posts es de de: {Math.round(arrComments.reduce((x,y) => x+y,0)/arrComments.length)}</p>
-        <p>Todos los datos son sacados de la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank" rel="noopener noreferrer">API Oficial de Taringa.</a></p>
-        <p>Creado por <a href="https://www.taringa.net/hugo1583/posts" target="_blank" rel="noopener noreferrer">@hugo1583</a>.</p>
+      <div style={{padding: "32px", margin: "10px auto", maxWidth: "600px", height: "auto", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "left", border: "1px solid #d1d5da", borderRadius: "3px"}}>
+        <p>Aplicación web creada para <a href="https://www.taringa.net/+taringa/cree-una-aplicacion-web-para-taringa-y-te-lo-muestro_waj4t" target="_blank" rel="noopener noreferrer">Taringa</a>. Organiza y visualiza estadísticas sobre los top post en tiempo real usando la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank" rel="noopener noreferrer">API oficial</a> (descontinuada).</p>
+        <p>Visualiza los puntos contra las visitas y distribución de categorías de los top post en cada periodo de tiempo. Algunos datos interesantes:</p>
+        <ul>
+  			<li>Promedio de puntos recibidos en top posts es: {Math.round(arrScores.reduce((x,y) => x+y,0)/arrScores.length)}</li>
+  			<li>Promedio de seguidores en los top posts es: {Math.round(arrFollows.reduce((x,y) => x+y,0)/arrFollows.length)}</li>
+  			<li>Promedio de comentarios en los top posts es: {Math.round(arrComments.reduce((x,y) => x+y,0)/arrComments.length)}</li>
+		</ul>
+        <p>Creado por <a href="https://github.com/andrescuco/taringa-stats" target="_blank" rel="noopener noreferrer">@andrescuco</a>.</p>
       </div>
 
     )
