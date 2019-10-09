@@ -1,10 +1,10 @@
 {
-  "short_name": "T! Stats",
-  "name": "Taringa Stats!",
+  "short_name": "t-stats",
+  "name": "¡Taringa Stats!",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "192x192",
+      "sizes": "32x32",
       "type": "image/png"
     }
   ],

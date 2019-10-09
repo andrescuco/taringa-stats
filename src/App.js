@@ -124,9 +124,9 @@ class App extends React.Component {
 
 
        if (this.state.charttype === "barChart") {
-         chart = (<Chart data={this.state.datasource.slice(0,3)}/>)
+         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "32px", margin: "10px auto", maxWidth: "600px"}}><Chart data={this.state.datasource.slice(0,3)}/></div>)
        } else if (this.state.charttype === "pieChart") {
-         chart = (<PieChart data={myArr}/>)
+         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "32px", margin: "10px auto", maxWidth: "600px"}}><PieChart data={myArr}/></div>)
        } else if (this.state.charttype === "info") {
          chart = (<Info  data={this.state.datasource}/>)
        }
@@ -224,11 +224,7 @@ class Chart extends React.Component {
 
     return (
       <VictoryChart
-        containerComponent={<svg  viewBox="-50 0 450 450"></svg>}
-        style={
-        {parent:
-          {height: "600"}
-        }}
+        containerComponent={<svg height="100%" viewBox="-50 0 450 330"></svg>}
         domainPadding={{ x: 25 }}
         theme={VictoryTheme.material}
       >
@@ -270,27 +266,25 @@ class Chart extends React.Component {
       />
       </VictoryGroup>
 
-      <VictoryLabel dx={100} y={10}
-        style={ {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                 fill: "rgb(69, 90, 100)", fontWeight: "bold", fontSize: 23} }
-        text="Puntos y Visitas"
-      />
-
-      <VictoryLabel dx={130} y={30}
-        style={ {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                 fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 12} }
-        text="Visitas VS Puntos Top 3"
-      />
-
-      <VictoryLegend
-        style={ {labels: {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
-                 fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 12} }}
-        x={260}
-        y={80}
+      <VictoryLegend 
+        symbolSpacer={3}
+        y={100}
         data={[
           {name: 'Puntos', symbol: { type: 'square', fill: '#000000' }},
           {name: 'Visitas', symbol: { type: 'square', fill: '#EBEBEB' }}
         ]}
+      />	
+
+      <VictoryLabel dx={85} y={10}
+        style={ {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                 fill: "rgb(69, 90, 100)", fontWeight: "bold", fontSize: 23} }
+        text="Puntos vs Visitas"
+      />
+
+      <VictoryLabel dx={166} y={30}
+        style={ {fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
+                 fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 12} }
+        text="Top 3"
       />
 
       </VictoryChart>
@@ -304,16 +298,16 @@ class PieChart extends React.Component {
           <div>
             <h1 style = {
                 {
-                    fontSize: 26,
+                    fontSize: 30,
                     fontFamily: "Roboto, 'Helvetica Neue', Helvetica, sans-serif",
                     color: "rgb(69, 90, 100)",
                     fontWeight: "bold",
                     margin: "0"
                 }
             }
-            > Categorias en Tops </h1>
+            > Categorias en tops </h1>
 
-            <svg width = {"100%"} height = {"450"} viewBox = "-100 0 600 450">
+            <svg viewBox = "-100 0 600 400">
 
             <VictoryPie events = {
                 [{
@@ -325,7 +319,7 @@ class PieChart extends React.Component {
                                 mutation: (props) => {
                                     return {
                                         style: Object.assign({}, props.style, {
-                                            opacity: 0.7
+                                            opacity: 0.8
                                         })
                                     };
                                 }
@@ -355,7 +349,7 @@ class PieChart extends React.Component {
             }
 
             labelRadius = {190}
-            theme = {VictoryTheme.material}
+            theme = {VictoryTheme.grayscale}
             animate = {
                 {
                     onLoad: {
