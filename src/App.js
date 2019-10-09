@@ -6,10 +6,10 @@ import { VictoryBar, VictoryChart, VictoryAxis,
 import Button from 'muicss/lib/react/button';
 import Loader from 'react-loader'
 
-const dailyTop = "http://www.mocky.io/v2/5d9d15ac31000016c92fc92b" // https://pastebin.com/yAV3gQtb
-const weeklyTop = "http://www.mocky.io/v2/5d9d1d7c3100002f262fc944" // https://pastebin.com/jDRwPMZV
-const monthlyTop = "http://www.mocky.io/v2/5d9d1ee031000038c92fc947" // https://pastebin.com/fNfJkTAG
-const allTimeTop = "http://www.mocky.io/v2/5d9d167b31000038c92fc92c" // https://pastebin.com/tENKBZGF
+const dailyTop = "https://www.mocky.io/v2/5d9d15ac31000016c92fc92b" // https://pastebin.com/yAV3gQtb
+const weeklyTop = "https://www.mocky.io/v2/5d9d1d7c3100002f262fc944" // https://pastebin.com/jDRwPMZV
+const monthlyTop = "https://www.mocky.io/v2/5d9d1ee031000038c92fc947" // https://pastebin.com/fNfJkTAG
+const allTimeTop = "https://www.mocky.io/v2/5d9d167b31000038c92fc92c" // https://pastebin.com/tENKBZGF
 
 class Row extends React.Component {
   constructor() {
@@ -206,7 +206,7 @@ class Info extends React.Component {
     return (
       <div style={{paddingTop: "20px", margin: "auto", maxWidth: "600px", height: "500px", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "center"}}>
         <p>Esta simple aplicación web fue creada para <a href="https://www.taringa.net/" target="_blank" rel="noopener noreferrer">T!</a></p>
-        <p>Su funcionalidad la de visualizar y organizar algunos de los datos de los Top Posts. Cambia el periodo de tiempo y los datos también cambiaran!</p>
+        <p>Su funcionalidad la de visualizar y organizar algunos de los datos de los Top Posts. Cambia el periodo de tiempo y los datos también cambiaran.</p>
         <p>Puedes ver una visualización de los Puntos VS Visitas de los tres primeros Top Posts de cada periodo de tiempo, también puedes ver cual es la distribución de categorías entre los diez primeros Top Posts de cada periodo de tiempo.</p>
         <p>Algunos datos interesantes son:</p>
         <p>El promedio de puntos recibidos en Top Posts es  de: {Math.round(arrScores.reduce((x,y) => x+y,0)/arrScores.length)}</p>
