@@ -29,6 +29,22 @@ a:focus {
   text-decoration: none;
 }
 
+#left,
+#right {
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+@media only screen 
+and (max-width : 768px) {
+    #left,
+    #right {
+        width: 100%;
+}
+}
+
 /*** Estilos de tabla **/
 
 table {

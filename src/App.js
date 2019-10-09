@@ -112,7 +112,7 @@ class App extends React.Component {
     let chart;
 
     this.state.datasource.forEach(function(x) {
-      arr.push(x.category_name)
+      arr.push(x.category_name.toLowerCase())
    })
 
    arr.forEach(function(i) {
@@ -138,31 +138,40 @@ class App extends React.Component {
       <Loader loaded={this.state.loaded}>
       <div>
         <h1 style={{fill: "rgb(69, 90, 100)", fontWeight: 100}}>¡Taringa Stats!</h1>
-        <div className="mui--text-center">
-          <Button onClick={this.changeToDaily}>   Diario    </Button>
-          <Button onClick={this.changeToWeekly}>  Semanal   </Button>
-          <Button onClick={this.changeToMonthly}> Mensual  </Button>
-          <Button onClick={this.changeToAllTime}> Todos </Button>
+
+        <div id="left">
+        	
+	        <div className="mui--text-center">
+	          <Button onClick={this.changeToDaily}>   Diario    </Button>
+	          <Button onClick={this.changeToWeekly}>  Semanal   </Button>
+	          <Button onClick={this.changeToMonthly}> Mensual  </Button>
+	          <Button onClick={this.changeToAllTime}> Todos </Button>
+	        </div>
+
+	        <table>
+	          <tbody>
+	          <tr>
+	          <th>#</th>
+	          <th>Titulo</th>
+	          <th>Puntos</th>
+	          <th>Visitas</th>
+	          </tr>
+	          {this.state.datasource.slice(0,5).map(this.eachRow)}
+	        </tbody>
+	        </table>
+
         </div>
 
-        <table>
-          <tbody>
-          <tr>
-          <th>#</th>
-          <th>Titulo</th>
-          <th>Puntos</th>
-          <th>Visitas</th>
-          </tr>
-          {this.state.datasource.slice(0,5).map(this.eachRow)}
-        </tbody>
-        </table>
-        <div className="mui--text-center">
-        <Button onClick={this.changeToBar} > <i className="fa fa-bar-chart">   </i> </Button>
-        <Button onClick={this.changeToPie} > <i className="fa fa-pie-chart">   </i> </Button>
-        <Button onClick={this.changeToInfo}> <i className="fa fa-file-text-o"> </i> </Button>
-        </div>
-        {chart}
-        </div>
+
+        <div id="right">
+	        <div className="mui--text-center">
+	        <Button onClick={this.changeToBar} > <i className="fa fa-bar-chart">   </i> </Button>
+	        <Button onClick={this.changeToPie} > <i className="fa fa-pie-chart">   </i> </Button>
+	        <Button onClick={this.changeToInfo}> <i className="fa fa-file-text-o"> </i> </Button>
+	        </div>
+	        {chart}
+	        </div>
+	    </div>
       </Loader>
     )
   } else {   // Mensaje de error si no hay datos en la API.
@@ -224,7 +233,7 @@ class Chart extends React.Component {
 
     return (
       <VictoryChart
-        containerComponent={<svg height="100%" viewBox="-50 0 450 330"></svg>}
+        containerComponent={<svg height="100%" viewBox="-50 0 450 334"></svg>}
         domainPadding={{ x: 25 }}
         theme={VictoryTheme.material}
       >
@@ -307,7 +316,7 @@ class PieChart extends React.Component {
             }
             > Categorias en tops </h1>
 
-            <svg viewBox = "-100 0 600 400">
+            <svg viewBox = "-100 0 600 405">
 
             <VictoryPie events = {
                 [{
