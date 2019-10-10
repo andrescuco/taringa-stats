@@ -8,13 +8,18 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
+    "braces": "^3.0.2",
+    "eslint": "^6.5.1",
     "gh-pages": "^2.1.1",
+    "js-yaml": "^3.13.1",
+    "mime": "^2.4.4",
     "muicss": "^0.9.43",
     "package.json": "^2.0.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-loader": "^2.4.5",
-    "victory": "^0.21.5"
+    "victory": "^0.21.5",
+    "webpack-dev-server": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
