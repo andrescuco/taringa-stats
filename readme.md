@@ -1,4 +1,6 @@
 ### Taringa Stats
+[![HitCount](http://hits.dwyl.io/andrescuco/taringa-stats.svg)](http://hits.dwyl.io/andrescuco/taringa-stats)
+
 [¡Accede a la app desde tu browser!](https://andrescuco.github.io/taringa-stats/ "demo")
 
 Proyecto realizado con React.js y Victory.js, recoje estadisticas de la API oficial de Taringa para crear visualizaciones animadas con actualizaciones en tiempo real.
