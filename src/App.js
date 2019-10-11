@@ -124,9 +124,9 @@ class App extends React.Component {
 
 
        if (this.state.charttype === "barChart") {
-         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "32px", margin: "10px auto", maxWidth: "600px"}}><Chart data={this.state.datasource.slice(0,3)}/></div>)
+         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "28px", margin: "10px 30px", maxWidth: "600px"}}><Chart data={this.state.datasource.slice(0,3)}/></div>)
        } else if (this.state.charttype === "pieChart") {
-         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "32px", margin: "10px auto", maxWidth: "600px"}}><PieChart data={myArr}/></div>)
+         chart = (<div style={{border: "1px solid #d1d5da", borderRadius: "3px", padding: "28px", margin: "10px 30px", maxWidth: "600px"}}><PieChart data={myArr}/></div>)
        } else if (this.state.charttype === "info") {
          chart = (<Info  data={this.state.datasource}/>)
        }
@@ -213,7 +213,7 @@ class Info extends React.Component {
        })
 
     return (
-      <div style={{padding: "32px", margin: "10px auto", maxWidth: "600px", height: "auto", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "left", border: "1px solid #d1d5da", borderRadius: "3px"}}>
+      <div style={{padding: "32px", margin: "10px 30px", maxWidth: "600px", height: "auto", fill: "rgb(69, 90, 100)", fontWeight: 100, fontSize: 16, textAlign: "left", border: "1px solid #d1d5da", borderRadius: "3px"}}>
         <p>Aplicación web creada para <a href="https://www.taringa.net/+taringa/cree-una-aplicacion-web-para-taringa-y-te-lo-muestro_waj4t" target="_blank" rel="noopener noreferrer">Taringa</a>. Organiza y visualiza estadísticas sobre los top post en tiempo real usando la <a href="http://api.taringa.net/docs/taringa/home.html" target="_blank" rel="noopener noreferrer">API oficial</a> (descontinuada).</p>
         <p>Visualiza los puntos contra las visitas y distribución de categorías de los top post en cada periodo de tiempo. Algunos datos interesantes:</p>
         <ul>
@@ -233,7 +233,7 @@ class Chart extends React.Component {
 
     return (
       <VictoryChart
-        containerComponent={<svg height="100%" viewBox="-50 0 450 334"></svg>}
+        containerComponent={<svg height="100%" viewBox="-190 0 750 330"></svg>}
         domainPadding={{ x: 25 }}
         theme={VictoryTheme.material}
       >
@@ -316,7 +316,7 @@ class PieChart extends React.Component {
             }
             > Categorias en tops </h1>
 
-            <svg viewBox = "-100 0 600 405">
+            <svg viewBox = "-250 0 900 410">
 
             <VictoryPie events = {
                 [{
