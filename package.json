@@ -18,7 +18,7 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-loader": "^2.4.5",
-    "victory": "^0.21.5",
+    "victory": "^36.6.8",
     "webpack-dev-server": "^3.8.2"
   },
   "scripts": {
